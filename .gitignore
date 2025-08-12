@@ -1,0 +1,14 @@
+
+/day*/*
+!/day*/*.cpp
+!/day*/*.hpp
+!/day*/*.h
+!/day*/*.c
+!/day*/makefile
+/projects_and_execises
+.vscode/
+
+
+*.o
+*.out
+
