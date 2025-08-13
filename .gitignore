@@ -4,7 +4,9 @@
 !/day*/*.hpp
 !/day*/*.h
 !/day*/*.c
+!/day*/Makefile
 !/day*/makefile
+
 /projects_and_execises
 .vscode/
 
