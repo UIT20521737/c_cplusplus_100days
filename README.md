@@ -36,7 +36,7 @@ Ngày đầu tiên tập trung vào việc thiết lập một môi trường l�
 
 ### **Quy trình làm việc**
 
-Dự án được quản lý bởi một `Makefile` tiện lợi nằm trong từng thư mục `day`.
+Dự án được quản lý bởi một `Makefile` tiện lợi nằm trong từng thư mục `day*`.
 
 * **Biên dịch một file cụ thể**:
     ```bash
@@ -56,3 +56,46 @@ Dự án được quản lý bởi một `Makefile` tiện lợi nằm trong t�
     ```bash
     make clean
     ```
+
+---
+
+## **Day 2: Làm Chủ Luồng Điều Khiển & Vòng Lặp**
+
+Trong ngày thứ hai, học cách ra lệnh cho chương trình tự đưa ra quyết định và thực hiện các công việc lặp đi lặp lại một cách hiệu quả
+
+### **Kiến thức đã học**
+
+1. **Cấu trúc Rẽ nhánh (Conditional Statements)**: 
+    * Học cách điều hướng luồng của chương trình dựa trên các điều kiện.
+
+    * if / else if / else: Nắm vững cách kiểm tra một chuỗi các điều kiện (thực hành trong if_else.cpp).
+
+    * switch / case: Hiểu cách sử dụng để so sánh một biến với nhiều giá trị cụ thể, bao gồm cả kỹ thuật "fall-through" (thực hành trong switch_case.cpp).
+
+2. **Vòng lặp (Loops):**
+    * Học cách tự động hóa các tác vụ lặp lại.
+
+    * for: Sử dụng khi biết trước số lần lặp (thực hành trong for.cpp).
+
+    * while và do-while: Nắm vững sự khác biệt cốt lõi giữa hai vòng lặp, đặc biệt là việc do-while luôn chạy ít nhất một lần (thực hành trong while_dowhile.cpp).
+
+3. **Kiểm soát Vòng lặp (Loop Control):**
+    * Học các kỹ thuật nâng cao để điều khiển vòng lặp một cách linh hoạt. (Thực hành trong break_continue.cpp)
+
+    * break: Dùng để thoát khỏi vòng lặp ngay lập tức.
+
+    * continue: Dùng để bỏ qua lần lặp hiện tại và chuyển sang lần lặp tiếp theo.
+### **Quy trình làm việc**
+
+
+* **Biên dịch và chạy file một file cụ thể**:
+    ```bash
+    # Sao chép file Makefile của day1 vào thư mục day2
+    cp day1/Makefile day2/
+    
+    # Di chuyển vào thư mục day2
+    cd day2
+
+    # Biên dịch file bạn muốn như trong day1
+    ```
+---
