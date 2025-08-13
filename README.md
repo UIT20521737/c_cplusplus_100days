@@ -88,14 +88,24 @@ Trong ngày thứ hai, học cách ra lệnh cho chương trình tự đưa ra q
 ### **Quy trình làm việc**
 
 
-* **Biên dịch và chạy file một file cụ thể**:
+* **Thiết lập môi trường cho ngày học**:
     ```bash
     # Sao chép file Makefile của day1 vào thư mục day2
     cp day1/Makefile day2/
     
     # Di chuyển vào thư mục day2
     cd day2
+    ```
 
-    # Biên dịch file bạn muốn như trong day1
+* **Biên dịch và chạy code**:
+    ```bash
+    # Biên dịch một file cụ thể (ví dụ: for.cpp)
+    make for
+
+    # Chạy file vừa biên dịch gần nhất
+    make run
+    
+    # Dọn dẹp các file thực thi đã tạo
+    make clean
     ```
 ---
