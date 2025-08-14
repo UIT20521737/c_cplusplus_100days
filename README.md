@@ -136,3 +136,36 @@ Trong ngày thứ 3 tổ chức và lưu trữ dữ liệu, từ các kiểu đ�
 
 ### **Quy trình làm việc**
 * Tiếp tục áp dụng quy trình làm việc hiệu quả bằng cách tạo thư mục day3, sao chép Makefile, và sử dụng nó để biên dịch và chạy các bài thực hành trong ngày.
+
+## **Day 4: Hàm & Con trỏ cơ bản**
+### **Kiến thức đã học**
+1. **Hàm:**
+* Hàm là một "cỗ máy nhỏ" thực hiện một công việc cụ thể. Việc "chế tạo" nó một lần và có thể gọi ra sử dụng lại nhiều lần, giúp chương trình trở nên gọn gàng và có tổ chức.
+2. **Tham trị (Pass-by-Value) và Tham chiếu (Pass-by-Reference):**
+* Khái niệm: Đây là hai cách khác nhau để truyền dữ liệu vào hàm.
+
+    - Tham Trị (Pass-by-Value): Giống như bạn đưa cho hàm một bản photo của tài liệu. Hàm có thể thay đổi trên bản photo đó, nhưng bản gốc không hề bị ảnh hưởng.
+
+    - Tham Chiếu (Pass-by-Reference): Giống như bạn đưa cho hàm địa chỉ của tài liệu gốc. Mọi thay đổi hàm thực hiện sẽ ảnh hưởng trực tiếp đến bản gốc.
+
+3. **Con trỏ cơ bản:**
+
+* Khái niệm: Con trỏ là một loại biến đặc biệt. Thay vì lưu một giá trị (như 10 hay 'A'), nó lưu địa chỉ trong bộ nhớ của một biến khác.
+
+    - Toán tử & (Address-of): Lấy địa chỉ của một biến.
+
+    - Toán tử * (Dereference): Lấy giá trị đang được lưu tại địa chỉ mà con trỏ đang trỏ tới.
+
+### **Quy trình làm việc**
+* Tạo thư mục day4 và sao chép Makefile từ day3 sang.
+```bash 
+    cd day4 && cp day3/Makefile day4/
+```
+* Di chuyển vào thư mục day4 và bắt đầu tạo các file *.cpp.
+```bash
+    cd day4/
+    #Sau đó tạo các file .cpp
+```
+
+* Biên dịch các file .cpp như đã làm những ngày trước đó
+
