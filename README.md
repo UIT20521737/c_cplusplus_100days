@@ -136,6 +136,7 @@ Trong ngày thứ 3 tổ chức và lưu trữ dữ liệu, từ các kiểu đ�
 
 ### **Quy trình làm việc**
 * Tiếp tục áp dụng quy trình làm việc hiệu quả bằng cách tạo thư mục day3, sao chép Makefile, và sử dụng nó để biên dịch và chạy các bài thực hành trong ngày.
+---
 
 ## **Day 4: Hàm & Con trỏ cơ bản**
 ### **Kiến thức đã học**
@@ -167,5 +168,35 @@ Trong ngày thứ 3 tổ chức và lưu trữ dữ liệu, từ các kiểu đ�
     #Sau đó tạo các file .cpp
 ```
 
-* Biên dịch các file .cpp như đã làm những ngày trước đó
+* Biên dịch các file .cpp như đã làm những ngày trước đó.
 
+---
+
+## **Day 5: Nhập môn hướng đối tượng (OOP)**
+### **Kiến thức đã học**
+1. **Tìm hiểu từ struct đến class:**
+* Bắt đầu tìm hiều **struct**. Sử dụng **struct** gom nhóm các dữ liệu liên quan vào một kiểu dữ liệu duy nhất.
+* Sau đó nâng cấp lên **class** là một cách gom nhóm dữ liệu (attributes) an toàn hơn và bổ sung thêm các hàm cho kiểu dữ liệu gọi là các phương thức (methods):
+
+    * Thuộc tính (**Attributes**): Các biến dữ liệu bên trong lớp.
+
+    * Phương thức (**Methods**): Các hàm thuộc về lớp để xử lý dữ liệu.
+
+    * Tính đóng gói (**Encapsulation**): Che giấu dữ liệu bằng private và cung cấp giao diện an toàn qua public.
+2. **Tổ chức code:**
+
+* Học được kỹ năng thiết yếu là tách biệt code ra thành các file **Header (`.h`)** để khai báo (interface) và file **Source (`.cpp`)** để triển khai chi tiết (implementation).
+
+### **Quy trình làm việc**
+* Viết Make file mới có thể biên dịch và liên kết nhiều file mã nguồn lại với nhau.
+
+* Gọi lệnh **make** để build 1 file thực thi hoàn chỉnh.
+
+    ```bash
+    # Để biên dịch toàn bộ dự án
+    make
+
+    # Để chạy chương trình chính
+    ./main_program
+    ```
+---
