@@ -109,3 +109,30 @@ Trong ngày thứ hai, học cách ra lệnh cho chương trình tự đưa ra q
     make clean
     ```
 ---
+
+## **Day 3: Kiểu Dữ Liệu & Cấu Trúc Mảng**
+Trong ngày thứ 3 tổ chức và lưu trữ dữ liệu, từ các kiểu đơn lẻ đến các cấu trúc phức tạp hơn như chuỗi ký tự và mảng.
+### **Kiến thức đã học**
+
+1. **Ôn tập Kiểu dữ liệu Nguyên thủy:**
+
+* Bạn đã ôn lại các kiểu dữ liệu cơ bản và quan trọng nhất: int, double, char, bool.
+
+2. **Làm chủ std::string:**
+
+* Hiểu rõ std::string là một lớp mạnh mẽ, không phải kiểu dữ liệu nguyên thủy.
+
+* Thực hành với rất nhiều phương thức hữu ích đi kèm: .length(), .size(), .empty(), .find(), .substr(), .append(), .insert(), .erase(), .clear(), và .c_str().
+
+* Nắm vững sự khác biệt cốt lõi về tính an toàn giữa việc truy cập bằng [] (nhanh, không an toàn) và .at() (chậm hơn, an toàn).
+
+* Hiểu về size_t và tại sao nó là kiểu dữ liệu tiêu chuẩn cho kích thước và chỉ số.
+
+3. **Giới thiệu về Mảng (Arrays):**
+
+* Biết dùng toán tử sizeof() đề lấy kích thước mảng.
+
+* Mảng 1D & 2D: Nắm được cách khai báo, khởi tạo và duyệt qua mảng một chiều và hai chiều bằng vòng lặp for.
+
+### **Quy trình làm việc**
+* Tiếp tục áp dụng quy trình làm việc hiệu quả bằng cách tạo thư mục day3, sao chép Makefile, và sử dụng nó để biên dịch và chạy các bài thực hành trong ngày.
