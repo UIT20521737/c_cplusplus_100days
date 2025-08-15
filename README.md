@@ -160,7 +160,7 @@ Trong ngày thứ 3 tổ chức và lưu trữ dữ liệu, từ các kiểu đ�
 ### **Quy trình làm việc**
 * Tạo thư mục day4 và sao chép Makefile từ day3 sang.
 ```bash 
-    cd day4 && cp day3/Makefile day4/
+    mkdir day4 && cp day3/Makefile day4/
 ```
 * Di chuyển vào thư mục day4 và bắt đầu tạo các file *.cpp.
 ```bash
@@ -245,7 +245,7 @@ chỉ của một hàm**.
 
 * Tạo thư mục day6 và sao chép Makefile từ day3 sang.
 ```bash 
-    cd day6 && cp day5/Makefile day6/
+    mkdir day6 && cp day5/Makefile day6/
 ```
 
 * Chỉnh sửa Makefile lại và gọi lệnh **make** để build 1 file thực thi hoàn chỉnh.
