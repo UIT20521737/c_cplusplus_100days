@@ -200,3 +200,47 @@ Trong ngày thứ 3 tổ chức và lưu trữ dữ liệu, từ các kiểu đ�
     ./main_program
     ```
 ---
+
+## **Day 6: Con Trỏ Nâng Cao và Quản Lý Bộ Nhớ Động**
+
+### **Kiến thức đã học**
+1. **Khái niệm Stack và Heap:**
+
+* **Stack:** Vùng nhớ này **nhỏ, rất nhanh**, và được **quản lý tự động**. Tất cả các biến bạn khai báo bên trong hàm (ví dụ: int x;) đều nằm trên **Stack** và sẽ tự đông bị xoá khi hàm kết thúc.
+
+* **Heap:** Vùng nhớ này **lớn, chậm hơn**, và phải **tự quản lý**. Dùng (**new**) để cấp phát bộ nhớ và (**delete**) để xoá/trả lại vừng nhớ đã cấp khi dùng xong. Nếu không trả lại vùng nhớ đã dùng có thể gây lỗi **rò rỉ bộ nhớ (memory leak)**.
+
+2. **Cấp phát động với `new` và `delete`:**
+
+* Dùng `new` thì phải có `delete`.
+
+* Dùng `new[]` thì phải `delete[]`. 
+
+* Luôn gán con trỏ bằng `nullptr` ngay sau khi `delete` hoặc `delete[]` để tránh các lỗi con trỏ treo.
+
+3. **Con trỏ hàm (Function Pointers):**
+
+* Con trỏ hàm là một biến không trỏ đến dữ liệu, mà trỏ đến **địa 
+chỉ của một hàm**.
+
+* Ứng dụng: Con trỏ hàm rất mạnh mẽ trong việc tạo ra các hệ thống linh hoạt. Ví dụ, bạn có thể tạo một mảng các con trỏ hàm, mỗi con trỏ trỏ đến một thuật toán sắp xếp khác nhau. Người dùng chỉ cần chọn một số, và bạn sẽ gọi thuật toán tương ứng thông qua con trỏ trong mảng.
+
+4. **Truyền Con trỏ vào Hàm (Passing Pointers to Functions):**
+
+* Khi truyền một biến thông thường vào hàm (tham trị), hàm sẽ nhận được một bản sao (copy). Mọi thay đổi trên bản sao đó không ảnh hưởng đến bản gốc.
+
+* Nhưng khi truyền một con trỏ vào hàm, thì chúng ta đang đưa cho hàm đó địa chỉ thật của biến gốc. Điều này cho phép hàm có thể thay đổi trực tiếp giá trị của biến gốc thông qua địa chỉ đó.
+
+5. **Con trỏ và Mảng:**
+
+* **Con trỏ và Mảng 1 chiều:** 
+
+    * Trong C++, tên của một mảng thực chất là một hằng con trỏ trỏ đến địa chỉ của phần tử đầu tiên trong mảng. Điều này cho phép chúng ta sử dụng các phép toán con trỏ (pointer arithmetic) để duyệt mảng. 
+
+    * Cách gọi `arr[i]` thực chất chỉ là một cách viết tắt tiện lợi cho `*(arr + i)`.
+
+* **Con trỏ và Mảng 2 Chiều (Nâng cao):**
+    * Để tạo một mảng 2 chiều động, chúng ta không dùng `int**` trực tiếp. Thay vào đó, chúng ta tạo một "mảng các con trỏ", sau đó cho mỗi con trỏ trong mảng đó trỏ đến một hàng (một mảng 1 chiều) riêng biệt.
+### **Quy trình làm việc**
+
+---
