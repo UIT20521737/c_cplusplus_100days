@@ -243,4 +243,18 @@ chỉ của một hàm**.
     * Để tạo một mảng 2 chiều động, chúng ta không dùng `int**` trực tiếp. Thay vào đó, chúng ta tạo một "mảng các con trỏ", sau đó cho mỗi con trỏ trong mảng đó trỏ đến một hàng (một mảng 1 chiều) riêng biệt.
 ### **Quy trình làm việc**
 
+* Tạo thư mục day6 và sao chép Makefile từ day3 sang.
+```bash 
+    cd day6 && cp day5/Makefile day6/
+```
+
+* Chỉnh sửa Makefile lại và gọi lệnh **make** để build 1 file thực thi hoàn chỉnh.
+
+```bash
+# Để biên dịch toàn bộ dự án
+make file_name
+
+# Để chạy chương trình chính
+./file_name
+```
 ---
