@@ -243,7 +243,7 @@ chỉ của một hàm**.
     * Để tạo một mảng 2 chiều động, chúng ta không dùng `int**` trực tiếp. Thay vào đó, chúng ta tạo một "mảng các con trỏ", sau đó cho mỗi con trỏ trong mảng đó trỏ đến một hàng (một mảng 1 chiều) riêng biệt.
 ### **Quy trình làm việc**
 
-* Tạo thư mục day6 và sao chép Makefile từ day3 sang.
+* Tạo thư mục day6 và sao chép Makefile từ day5 sang.
 ```bash 
     mkdir day6 && cp day5/Makefile day6/
 ```
@@ -258,3 +258,82 @@ make file_name
 ./file_name
 ```
 ---
+
+## **Day 7: Làm việc với File và xử lý ngoại lệ**
+### **Kiến thức đã học:**
+1. **Đọc/Ghi File với  `fstream`:**
+
+* Khái niệm: Thư viện `fstream` trong C++ cung cấp các công cụ để làm việc với file một cách dễ dàng, tương tự như cách bạn dùng cout và cin.
+    
+    * ofstream (output file stream): Dùng để ghi dữ liệu ra file.
+    
+    * ifstream (input file stream): Dùng để đọc dữ liệu từ fi
+
+2. **Xử lý ngoại lệ:**
+* Khái niệm: Khi mở file, rất nhiều lỗi có thể xảy ra (ví dụ file không tồn tại). if/else có thể xử lý được, nhưng khi chương trình phức tạp, code sẽ rất rối. Xử lý ngoại lệ (try/catch) là cách làm hiện đại và gọn gàng hơn.
+
+    * `try`: Đặt đoạn code có nguy cơ gây lỗi vào trong khối `try`.
+    
+    * `throw`: Khi có lỗi xảy ra, bạn "ném" ra một tín hiệu lỗi.
+
+    * `catch`: Khối lệnh này sẽ "bắt" lấy tín hiệu lỗi và xử lý nó, giúp chương trình không bị sập.
+
+3. **Ghi đè file:**
+
+* Nếu bạn muốn ghi thêm vào file có sẵn mà không xóa nội dung cũ thì bạn chỉ cần thêm một "chế độ" khi mở file.
+```cpp 
+    ofstream file("log.txt", ios::app);
+```
+
+* Các Chế độ Mở File (File Modes)
+
+    * `ios::in`
+       
+       * Mục đích: Mở file để đọc (input).
+       
+       * Mặc định cho: ifstream.
+    
+    * `ios::out`
+
+        * Mục đích: Mở file để ghi (output).
+        
+        * Mặc định cho: ofstream. Theo mặc định, chế độ này sẽ xóa nội dung cũ của file nếu file đã tồn tại.
+    
+    * `ios::app (append)`
+        
+        * Mục đích: Mở file để ghi nối tiếp. Con trỏ ghi sẽ được đặt ở cuối file trước mỗi thao tác ghi. Nội dung cũ được giữ lại.
+    * `ios::ate (at end)`
+
+        * Mục đích: Mở file và di chuyển con trỏ đến cuối file ngay lập tức. Tuy nhiên, bạn vẫn có thể di chuyển con trỏ đến vị trí khác để đọc hoặc ghi.
+        Khác biệt với app: app luôn luôn ghi ở cuối, còn ate chỉ di chuyển đến cuối lúc ban đầu.
+
+    * `ios::trunc (truncate)`
+        
+        * Mục đích: Nếu file đã tồn tại, xóa sạch nội dung của nó. Đây là hành vi mặc định khi bạn dùng ios::out.
+    
+    * `ios::binary`
+        
+        * Mục đích: Mở file ở chế độ nhị phân thay vì văn bản. Chế độ này dùng để đọc/ghi các file không phải text như ảnh, âm thanh, file thực thi,...
+
+### **Quy trình làm việc:**
+
+* Tạo thư mục day7 và sao chép Makefile từ day6 sang.
+```bash 
+    mkdir day7 && cp day7/Makefile day6/
+```
+
+* Chỉnh sửa Makefile lại và gọi lệnh **make** để build 1 file thực thi hoàn chỉnh.
+
+```bash
+# Để biên dịch toàn bộ dự án
+make file_name
+
+# Để chạy chương trình chính
+./file_name
+```
+---
+
+## **Day 8: Vòng đời đối tượng và The Rule of Three**
+
+---
+
