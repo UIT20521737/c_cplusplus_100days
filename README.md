@@ -337,3 +337,34 @@ make file_name
 
 ---
 
+### **Kiến thức đã học**
+1. **Constructor (Hàm khởi tạo):**
+
+* Khái niệm: Constructor là một phương thức đặc biệt được gọi tự động mỗi khi một đối tượng của lớp được tạo ra. Nhiệm vụ chính của nó là khởi tạo các giá trị ban đầu cho các thuộc tính.
+
+* Hãy tưởng tượng nó là quy trình "cài đặt ban đầu" khi bạn bật một chiếc điện thoại mới.
+
+2. **Destructor (Hàm huỷ):**
+
+* Destructor là một phương thức đặc biệt được gọi tự động mỗi khi một đối tượng của lớp hết phạm vi hoạt động. Nhiệm vụ chính của nó là huỷ đối tượng sau khi đã hết phạm vi hoạt động.
+
+3. **The Rule of Three:**
+
+* Khái niệm: Đây là một quy tắc cực kỳ quan trọng trong C++. Nó nói rằng: "Nếu lớp của bạn cần tự định nghĩa một trong ba phương thức sau, thì rất có thể nó cần cả ba."
+Destructor
+
+* Copy Constructor (Hàm khởi tạo sao chép)
+
+* Copy Assignment Operator (Toán tử gán sao chép)
+
+* Quy tắc này đặc biệt quan trọng khi lớp của bạn có chứa con trỏ quản lý bộ nhớ động. Nếu không tuân thủ, bạn sẽ gặp lỗi "sao chép nông" (shallow copy), dẫn đến việc hai đối tượng cùng trỏ vào một vùng nhớ và gây ra lỗi nghiêm trọng khi một trong hai bị hủy.
+
+### **Quy trình làm việc**
+
+* Tạo thư mục day8, sao chép Makefile, và cd day8.
+
+* Tạo các file .cpp và thực hành.
+
+* Biên dịch với make <tên_file> và chạy với ./<tên_file>.
+
+---
