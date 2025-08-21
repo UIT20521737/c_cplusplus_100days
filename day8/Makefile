@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -g
 
 # Automatically find all .cpp files
-SOURCES ?= main.cpp Car.cpp 
+SOURCES = main.cpp Car.cpp 
 # Create corresponding object file names (.o)
 OBJECTS = $(SOURCES:.cpp=.o)
 

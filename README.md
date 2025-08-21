@@ -183,7 +183,14 @@ Trong ngày thứ 3 tổ chức và lưu trữ dữ liệu, từ các kiểu đ�
     * Phương thức (**Methods**): Các hàm thuộc về lớp để xử lý dữ liệu.
 
     * Tính đóng gói (**Encapsulation**): Che giấu dữ liệu bằng private và cung cấp giao diện an toàn qua public.
-2. **Tổ chức code:**
+
+2. **Getter và Setter:**
+
+* Getter: Là một phương thức public dùng để lấy (`get`) giá trị của một thuộc tính private. Thường có tên bắt đầu bằng `get`.
+
+* Setter: Là một phương thức public dùng để thiết lập (`set`) giá trị cho một thuộc tính private. Thường có tên bắt đầu bằng `set` và chứa logic kiểm tra dữ liệu đầu vào.
+
+3. **Tổ chức code:**
 
 * Học được kỹ năng thiết yếu là tách biệt code ra thành các file **Header (`.h`)** để khai báo (interface) và file **Source (`.cpp`)** để triển khai chi tiết (implementation).
 
@@ -361,10 +368,117 @@ Destructor
 
 ### **Quy trình làm việc**
 
-* Tạo thư mục day8, sao chép Makefile, và cd day8.
+* Tạo thư mục day8, sao chép Makefile trong thư mục day7, và cd day8.
+
+* Sửa nội dung trong Makefile
+```Makefile
+SOURCES = main.cpp Car.cpp 
+```
 
 * Tạo các file .cpp và thực hành.
 
-* Biên dịch với make <tên_file> và chạy với ./<tên_file>.
+* Biên dịch với `make` và chạy với `./main_program`.
 
+---
+
+## **Day 9: Tính Kế Thừa (Inheritance):**
+
+### **Kiến thức đã học**
+
+1. **Định nghĩa Tính Kế Thừa:**
+
+    Hãy tưởng tượng mối quan hệ trong thế giới thực: "Chó" là một "Động vật".
+
+    * Lớp Động vật (Animal) là lớp cơ sở (Base Class), nó có các thuộc tính và hành động chung như age (tuổi) và eat() (ăn).
+
+    * Lớp Chó (Dog) là lớp dẫn xuất (Derived Class), nó kế thừa tất cả những gì lớp Animal có, và còn có thêm những đặc điểm riêng như breed (giống loài) và hành động bark() (sủa).
+
+    Kế thừa giúp bạn không phải viết lại code cho các thuộc tính và phương thức chung.
+
+2. **Các dạng Kế Thừa:**
+
+    Khi một lớp con kế thừa từ lớp cha, "dạng kế thừa" (`public`, `protected`, hay `private`) sẽ quyết định quyền truy cập của các thành viên được kế thừa sẽ trở thành như thế nào trong lớp con.
+
+    * Kế thừa `public` (Phổ biến nhất):
+        * Thành viên `public` của lớp cha vẫn là `public` trong lớp con.
+
+        * Thành viên ``protected`` của lớp cha vẫn là `protected` trong lớp con.
+
+        * Thành viên `private` của lớp cha không bao giờ được truy cập.
+
+    * Kế thừa `protected`:
+        * Thành viên `public` và `protected` của lớp cha đều trở thành `protected` trong lớp con.
+
+    * Kế thừa `private`:
+        * Thành viên `public` và `protected` của lớp cha đều trở thành `private` trong lớp con.
+
+3. **Đa Thừa Kế:**
+
+* C++ là một trong số ít ngôn ngữ cho phép một lớp con có thể kế thừa từ nhiều lớp cha cùng một lúc.
+
+* Đa kế thừa rất mạnh mẽ nhưng cũng có thể gây ra các vấn đề phức tạp như "The Diamond Problem" (Vấn đề Kim cương)
+
+* Vấn đề Kim Cương:
+    
+    * Vấn đề Kim cương (Diamond Problem) là một sự mơ hồ xảy ra trong đa kế thừa khi một lớp con kế thừa từ hai lớp cha, và hai lớp cha đó lại cùng kế thừa từ một lớp "ông". Điều này tạo ra một cấu trúc kế thừa hình kim cương.
+
+    * Vấn đề phát sinh là: lớp cháu cuối cùng sẽ có hai bản sao của các thuộc tính và phương thức từ lớp ông, gây ra sự nhầm lẫn và xung đột.
+
+    * Ví dụ:
+        Hãy tưởng tượng hệ thống phân cấp lớp sau:
+        
+        * Lớp "ông": Person (Người) có một thuộc tính là name
+
+        * Lớp cha 1: Student (Sinh viên) kế thừa từ Person (vì Sinh viên là một Người).
+
+        * Lớp cha 2: Employee (Nhân viên) cũng kế thừa từ Person (vì Nhân viên là một Người).
+
+        * Lớp cháu: GraduateAssistant (Trợ giảng) kế thừa từ cả Student và Employee (vì Trợ giảng vừa là Sinh viên, vừa là Nhân viên).
+
+    * Cấu trúc này tạo ra một hình kim cương: GraduateAssistant ở dưới cùng, Student và Employee ở giữa, và Person ở trên cùng.
+
+    * Lớp GraduateAssistant bây giờ kế thừa Person qua hai con đường khác nhau (một qua Student, một qua Employee). Điều này dẫn đến hai vấn đề:
+
+        * Dữ liệu bị trùng lặp: Đối tượng GraduateAssistant sẽ có hai thuộc tính name riêng biệt, một cái từ phần Student và một cái từ phần Employee. Điều này gây lãng phí bộ nhớ và phi logic, vì một trợ giảng chỉ có một cái tên.
+            
+        * Sự mơ hồ (Ambiguity): Nếu bạn gọi một phương thức của lớp Person từ một đối tượng GraduateAssistant (ví dụ: ga.getName()), trình biên dịch sẽ bối rối. Nó không biết nên gọi phiên bản getName() được kế thừa qua Student hay phiên bản được kế thừa qua Employee. Điều này sẽ gây ra lỗi biên dịch.
+
+    * Giải pháp: Kế thừa ảo (Virtual Inheritance)
+
+        * C++ cung cấp một giải pháp thanh lịch cho vấn đề này bằng cách sử dụng từ khóa virtual khi khai báo kế thừa.
+
+        * Chỉ cần thêm virtual vào các lớp cha ở giữa (Student và Employee):
+    
+        ```cpp
+            // Person class remains the same.
+            class Person {
+            public:
+                string name;
+            };
+
+            // Add 'virtual' to the inheritance declaration.
+            class Student : virtual public Person {
+                // ...
+            };
+
+            // Add 'virtual' here as well.
+            class Employee : virtual public Person {
+                // ...
+            };
+
+            // GraduateAssistant class remains the same.
+            class GraduateAssistant : public Student, public Employee {
+                // ...
+            };
+        ```
+### **Quy trình làm việc**
+* Tạo thư mục day9, sao chép Makefile từ day8, và cd day9.
+
+* Sửa nội dung trong Makefile
+```Makefile
+SOURCES ?= main.cpp Dog.cpp Animal.cpp
+```
+* Tạo file các file `.cpp` và file `.h` và thực hành.
+
+* Biên dịch với `make` và chạy với `./main_program`.
 ---
