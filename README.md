@@ -541,3 +541,109 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
         ./main_program
     ```
 ---
+
+## **Day 11: Nhập môn STL**
+### **Kiến thức đã học**
+1. **`vector` - Mảng thông minh:**
+
+* `vector` là một phiên bản nâng cấp toàn diện của mảng C-style. nó là một mảng động, có thể tự động co giãn kích thước khi bạn thêm hoặc xoá phần tử. Đây là container được sử dụng nhiều nhất trong C++ hiện đại.
+
+* Các phương thức của `vector`:
+    
+    | Phương thức | Chức năng          |
+    |-------------|--------------------|
+    |`.push_back(value)`|	Thêm một phần tử vào cuối vector.|
+    |`.pop_back()`|	Xóa phần tử cuối cùng của vector.|
+    |`.insert(iterator, value)`|	Chèn một phần tử vào một vị trí cụ thể.|
+    |`.erase(iterator)`|	Xóa một phần tử tại một vị trí cụ thể.|
+    |`.clear()`|	Xóa tất cả các phần tử, làm cho vector rỗng.|
+    |`[index]`|	Truy cập phần tử tại chỉ số index. Nhanh, không an toàn.|
+    |.at(index)|	Truy cập phần tử tại chỉ số index. Chậm hơn, an toàn (sẽ báo lỗi nếu chỉ số không hợp lệ).|
+    |`.front()`|	Lấy giá trị của phần tử đầu tiên.|
+    |`.back()`|	Lấy giá trị của phần tử cuối cùng.|
+    |`.size()`|	Trả về số lượng phần tử hiện có trong vector.|
+    |`.empty()`|	Kiểm tra xem vector có rỗng không (trả về true hoặc false).|
+    |`.capacity()`|	Trả về dung lượng bộ nhớ mà vector đã được cấp phát.|
+    |`.resize(new_size)`|	Thay đổi số lượng phần tử của vector thành new_size|
+
+
+    ```c++
+        vector<int> nums = {10, 20};
+        nums.push_back(30); // nums is now {10, 20, 30}
+        cout << nums[0];       // Prints 10
+        cout << nums.at(1);    // Prints 20
+        cout << nums.front();  // Prints 10
+        cout << nums.back();   // Prints 30
+        nums.pop_back();    // nums is now {10, 20}
+        nums.clear();       // nums is now {}
+
+
+    ```
+
+2. **`map` - Từ điển Key-Value**
+* `map` hoạt động giống như một cuốn từ điển. Nó lưu trữ các cặp key-value (khóa-giá trị), ví dụ: key là "tên sinh viên", value là "điểm số". Các key là duy nhất và được map tự động sắp xếp.
+
+* Các phương thức của `map`:
+    
+    | Phương thức | Chức năng          |
+    |-------------|--------------------|
+    |`.insert(...)`|	Thêm một cặp key-value. <br> Ví dụ: scores.insert({"Anna", 95});|
+    |`.erase(key)`|	Xóa phần tử có key tương ứng.|
+    |`.clear()`|	Xóa tất cả các cặp key-value.|
+    |`.find(key)`|	Tìm một phần tử. Nếu tìm thấy, nó trả về một "iterator" (giống như con trỏ) trỏ đến phần tử đó. Nếu không, nó trả về iterator .end().|
+    |`.count(key)`|	Đếm số lần xuất hiện của một key. Vì map chỉ chứa các key duy nhất, hàm này sẽ trả về 1 (nếu tồn tại) hoặc 0 (nếu không). Đây là cách kiểm tra sự tồn tại của một phần tử dễ nhất.|
+    |`.size()`|	Trả về số lượng phần tử (cặp key-value cho map).|
+    |`.empty()`|	Kiểm tra xem có rỗng không.|
+
+    ```cpp
+        // Map
+        map<string, int> scores;
+        scores.insert({"Eve", 89});
+        scores.erase("Eve");
+
+        if (scores.count("John") > 0) {
+            cout << "John's score exists." << endl;
+        }
+    ```
+3. **`set` - Bộ sưu tập các phần tử duy nhất**
+
+* Các phương thức của `set`:
+    
+    | Phương thức | Chức năng          |
+    |-------------|--------------------|
+    |`.insert(...)`|	Thêm một cặp key-value. <br> Ví dụ: nums.insert(42);|
+    |`.erase(key)`|	Xóa phần tử có giá trị tương ứng.|
+    |`.clear()`|	Xóa tất cả các phần tử.|
+    |`.find(key)`|	Tìm một phần tử. Nếu tìm thấy, nó trả về một "iterator" (giống như con trỏ) trỏ đến phần tử đó. Nếu không, nó trả về iterator .end().|
+    |`.count(key)`|	Đếm số lần xuất hiện của một key. Vì set chỉ chứa các key duy nhất, hàm này sẽ trả về 1 (nếu tồn tại) hoặc 0 (nếu không). Đây là cách kiểm tra sự tồn tại của một phần tử dễ nhất.|
+
+    ```cpp
+        // Set
+        set<int> unique_nums;
+        unique_nums.insert(100);
+        unique_nums.erase(100);
+        if (unique_nums.find(50) != unique_nums.end()) {
+            cout << "50 was found in the set." << endl;
+        }
+
+    ```
+### **Quy trình làm việc**
+
+* Thiết lập môi trường cho ngày học:
+    ```Bash
+        # Từ thư mục gốc của dự án
+        mkdir day11
+        cp day10/Makefile day11/
+    ```
+
+* Biên dịch và chạy các file thực hành:
+    ```Bash
+        # Di chuyển vào thư mục day11 để làm việc
+        cd day11
+
+        # Biên dịch một file cụ thể (ví dụ: vector_example.cpp)
+        make vector_example
+
+        # Chạy file vừa biên dịch
+        ./vector_example
+    ```
