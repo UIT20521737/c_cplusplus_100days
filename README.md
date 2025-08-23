@@ -482,3 +482,62 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 
 * Biên dịch với `make` và chạy với `./main_program`.
 ---
+
+## **Day 10: Tính Đa Hình (Polymorphism) & Tính Trừu Tượng (Abstraction)**
+### **Kiến thức đã học**
+1. **Tính Đa Hình (Polymorphism)**
+
+* Đa hình là khả năng cho phép xử lý nhiều đối tượng thuộc các lớp con khác nhau (ví dụ Circle, Square) thông qua một giao diện chung duy nhất (thường là con trỏ hoặc tham chiếu của lớp cha, ví dụ Shape*). Điều này giúp viết code linh hoạt và dễ dàng mở rộng.
+
+* Từ khoá `virtual` là "Công tắc" để bật đa hình, ra lệnh cho C++ quyết đinh phiên bản phương thức nào (của lớp cha hay lớp con) sẽ được gọi _tại thời điểm chạy (runtime)_, dựa trên kiểu đối tượng thực tế.
+
+2. **Tính Trừu Tượng (Abstraction)**
+
+* Tính trừu tượng là nguyên tắc **che giấu sự phức tạp của việc triển khai** và chỉ đưa ra một "hợp đồng" hoặc "giao diện" (interface) mà cacxs lớp khác phải tuân theo. Nó tập trung vào **"cái gì"** (what) thay vì **(như thế nào)** (how).
+
+* Công cụ: 
+    * **Hàm thuần ảo (Pure Virtual Function):** Một hàm ảo không có phần triển khai ở lớp cha, được khai báo bằng cú pháp `virtual ... = 0;`
+
+    * **Lớp trừu tượng (Abstract Class):** Một lớp chứa ít nhất một hàm thuần ảo. Lớp này không thể được dùng để tạo đối tượng trực tiếp. 
+
+3. Các Kỹ thuật và Quy ước Quan trọng
+
+* Từ khóa override: Sử dụng override sau khai báo phương thức ở lớp con để yêu cầu trình biên dịch kiểm tra xem phương thức đó có thực sự đang định nghĩa lại một hàm virtual từ lớp cha hay không. Đây là một thói quen tốt để tránh các lỗi chính tả tinh vi.
+
+* Hàm hủy ảo (Virtual Destructor): Hiểu tầm quan trọng của việc khai báo virtual ~ClassName() ở lớp cha. Điều này đảm bảo khi bạn xóa một đối tượng lớp con thông qua con trỏ lớp cha, hàm hủy của cả lớp con và lớp cha đều được gọi đúng thứ tự, tránh rò rỉ tài nguyên.
+
+4. Hàm Bạn và Lớp Bạn (friend) 
+
+* Thông thường, các thuộc tính private của một lớp được bảo vệ tuyệt đối khỏi sự truy cập từ bên ngoài. Tuy nhiên, đôi khi bạn cần cho phép một hàm hoặc một lớp khác (là "bạn bè" thân thiết) có quyền truy cập vào các thành viên private này. Từ khóa friend cho phép bạn làm điều đó.
+
+* Hãy tưởng tượng private là "phòng riêng" của bạn. friend giống như việc bạn đưa chìa khóa dự phòng 🔑 cho một người bạn thân hoặc một thành viên gia đình mà bạn tin tưởng tuyệt đối.
+### **Quy trình làm việc**
+* Cấu trúc Dự án nhiều file: Bạn đã xây dựng thành công một dự án OOP hoàn chỉnh được tách biệt rõ ràng thành các file .h (khai báo) và .cpp (triển khai), một kỹ năng thiết yếu cho mọi dự án thực tế.
+
+    ```bash
+        day10/
+        ├── Circle.cpp
+        ├── Circle.h
+        ├── Makefile
+        ├── Shape.cpp
+        ├── Shape.h
+        ├── Square.cpp
+        ├── Square.h
+        └── main.cpp
+    ```
+
+* Cập nhật **Makefile**: Bạn đã học cách cập nhật biến SOURCES để biên dịch và liên kết tất cả các file mã nguồn cần thiết thành một chương trình duy nhất.
+
+    ```Makefile
+    SOURCES = main.cpp Shape.cpp Circle.cpp Square.cpp
+    ```
+* Biên dịch và Chạy:
+
+    ```Makefile
+        # Để biên dịch toàn bộ dự án
+        make
+
+        # Để chạy chương trình
+        ./main_program
+    ```
+---
