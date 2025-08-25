@@ -6,7 +6,7 @@ Student::Student(string id, string name, double gpa){
     this->gpa = gpa;
 }
 
-void Student::display(){
+void Student::display() const{
     cout << "Id: " << id << " - Name: " << name << " - GPA: " << fixed << setprecision(2) << gpa << endl;
 }
 

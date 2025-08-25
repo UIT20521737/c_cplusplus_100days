@@ -14,7 +14,7 @@ class Student {
         void setId(string id);
         void setName(string name);
         void setGPA(double gpa);
-        void display();
+        void display() const;
         string getId();
         string getName();
         double getGPA();
