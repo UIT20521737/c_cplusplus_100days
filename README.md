@@ -905,31 +905,31 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 
 * Chạy file kiểm nghiệm.
 ---
-## **Day18:**
-### **Kiến thức đã học**
+## **Day 18 - 25 Student Manager Project:**
+
+### **Mô tả dự án**
+
+Chương trình phải cung cấp các chức năng sau thông qua một menu lựa chọn:
+
+* Thêm Sinh viên: Cho phép người dùng nhập thông tin (ID, Tên, GPA) và thêm một sinh viên mới vào danh sách. ID của sinh viên không được trùng lặp.
+
+* Hiển thị Toàn bộ Danh sách: In ra thông tin của tất cả sinh viên đang có trong hệ thống một cách có định dạng.
+
+* Sửa thông tin Sinh viên: Cho phép người dùng tìm một sinh viên theo ID và cập nhật lại Tên hoặc GPA.
+
+* Xóa Sinh viên: Cho phép người dùng nhập ID và xóa sinh viên tương ứng ra khỏi danh sách.
+
+* Tìm kiếm Sinh viên: Cho phép người dùng nhập ID và xem thông tin chi tiết của sinh viên đó.
+
+* Sắp xếp Danh sách: Cung cấp các tùy chọn để sắp xếp danh sách sinh viên theo ID, Tên, hoặc GPA (giảm dần).
+
+* Lưu & Tải Dữ liệu:
+
+Chương trình phải tự động tải danh sách sinh viên từ một file (ví dụ: students.csv) khi khởi động.
+
+Khi người dùng chọn thoát, chương trình phải tự động lưu danh sách hiện tại vào file đó, ghi đè nội dung cũ.
+
+
 ### **Quy trình làm việc**
 ---
-## **Day19:**
-### **Kiến thức đã học**
-### **Quy trình làm việc**
----
-## **Day20:**
-### **Kiến thức đã học**
-### **Quy trình làm việc**
----
-## **Day21:**
-### **Kiến thức đã học**
-### **Quy trình làm việc**
----
-## **Day22:**
-### **Kiến thức đã học**
-### **Quy trình làm việc**
----
-## **Day23:**
-### **Kiến thức đã học**
-### **Quy trình làm việc**
----
-## **Day24:**
-### **Kiến thức đã học**
-### **Quy trình làm việc**
----
+
