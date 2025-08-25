@@ -650,7 +650,7 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 ---
 
 ## **Day12: Debugger và Makefile**
-### Kiến thức đã học
+### **Kiến thức đã học**
 1. **Debugger:**
 
 * Debugger: Giống như bạn có một bản vẽ 3D của cỗ máy, có thể chạy mô phỏng từng bước, tạm dừng, và xem xét giá trị của từng con ốc tại bất kỳ thời điểm nào.
@@ -719,7 +719,7 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
             ```Makefile
                 .PHONY: all clean run
             ```
-### Quy trình thực hiện
+### **Quy trình làm việc**
 * Tạo thư mục day12/ và file Makefile:
     ```bash
         mkdir day12/ && touch Makefile
@@ -732,3 +732,107 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 
 * Viết nội dung Makefile và chạy file kiểm nghiệm.
 
+---
+
+## **Day13:**
+### **Kiến thức đa học**
+1. **Con trỏ thông minh:**
+* Đây là giải pháp của C++ hiện đại cho vấn đề rò rỉ bộ nhớ. Con trỏ thông minh là các đối tượng "gói" con trỏ thô, và chúng tự động gọi delete khi không còn được sử dụng.
+
+* `std::unique_ptr`: Đại diện cho quyền sở hữu duy nhất. Chỉ có một unique_ptr có thể trỏ đến một đối tượng tại một thời điểm. Đây là lựa chọn mặc định vì nó rất nhẹ và hiệu quả.
+
+* `std::shared_ptr`: Cho phép chia sẻ quyền sở hữu. Nhiều shared_ptr có thể cùng trỏ đến một đối tượng. Đối tượng sẽ chỉ bị hủy khi con trỏ shared_ptr cuối cùng bị hủy.
+
+* `std::weak_ptr`:  Dùng để phá vỡ các tham chiếu vòng tròn (circular references) khi sử dụng shared_ptr. weak_ptr có thể kiểm tra xem đối tượng nó đang quan sát còn tồn tại hay không, nhưng không thể truy cập trực tiếp. Để truy cập, bạn phải tạm thời "khóa" nó lại để tạo ra một `shared_ptr`.
+
+2. **`auto` & Vòng lặp `for` dựa trên phạm vi:**
+
+* Từ khóa `auto`: Yêu cầu trình biên dịch tự suy ra kiểu dữ liệu của biến. Cực kỳ hữu ích với các kiểu dữ liệu dài và phức tạp. Khi từ khoá `auto` đi kèm `&` sẽ tham chiếu đến đối tượng. Nếu không có nó sẽ copy ra 1 đối tượng mới làm chậm chương trình.
+
+* Vòng lặp ``for`` dựa trên phạm vi (Range-based `for` loop): Một cách duyệt qua tất cả các phần tử trong một container (như vector) cực kỳ ngắn gọn, dễ đọc, và an toàn.
+
+3. **Lamda:**
+
+* Lambda là một cách để bạn tạo ra một hàm "vô danh" hay "hàm dùng một lần" ngay tại nơi bạn cần nó. Nó cực kỳ hữu ích khi bạn cần truyền một hàm nhỏ làm tham số cho một hàm khác (ví dụ như các thuật toán của STL).
+
+* Các hàm có sẵn trong thư viện `<algorithm>`
+    
+    - Các thuật toán tìm kiếm và kiểm tra:
+
+        |Hàm|Mục đích|Lamda đóng vai trò là gì|
+        |---|---|---|
+        |`std::find_if`|	Tìm phần tử đầu tiên thỏa mãn điều kiện.|	Trả về `true` cho phần tử cần tìm.|
+        |`std::count_if`|	Đếm số lượng phần tử thỏa mãn điều kiện.|	Trả về `true` cho các phần tử cần đếm.|
+        |`std::any_of`|	Kiểm tra xem có bất kỳ phần tử nào thỏa mãn điều kiện không.|	Trả về `true` cho điều kiện cần kiểm tra.|
+        |`std::all_of`|	Kiểm tra xem tất cả các phần tử có thỏa mãn điều kiện không.|	Trả về `true` cho điều kiện cần kiểm tra.|
+        |`std::none_of`|	Kiểm tra xem không có phần tử nào thỏa mãn điều kiện không.|	Trả về `true` cho điều kiện cần kiểm tra.|
+
+    - Các thuật toán sắp xếp và phân hoạch:
+
+        |Hàm|Mục đích|Lambda đóng vai trò gì|
+        |---|---|---|
+        |`std::sort`|Sắp xếp một dãy.|Một hàm so sánh nhận hai phần tử a và b, trả về true nếu a nên đứng trước b.|
+        |`std::stable_sort`|Sắp xếp ổn định (giữ nguyên thứ tự tương đối của các phần tử bằng nhau).|Tương tự std::sort.|
+        |`std::partition`|Phân hoạch một dãy thành hai nhóm: nhóm thỏa mãn điều kiện và nhóm không thỏa mãn.|Một hàm điều kiện, trả về true cho các phần tử thuộc nhóm đầu tiên.|
+
+    - Các thuật toán chỉnh sửa và biến đổi:
+        |Hàm|Mục đích|Lambda đóng vai trò gì|
+        |---|---|---|
+        |`std::for_each`|Thực hiện một hành động trên mỗi phần tử.|Một hàm nhận một phần tử và thực hiện một việc gì đó (ví dụ: in ra màn hình).|
+        |`std::transform`|Tạo ra một dãy mới bằng cách áp dụng một phép biến đổi trên mỗi phần tử của dãy cũ.|Một hàm nhận một phần tử và trả về giá trị đã được biến đổi của nó.|
+        |`std::remove_if`|"Xóa" các phần tử thỏa mãn một điều kiện (thực chất là di chuyển chúng về cuối).|Một hàm điều kiện, trả về true cho các phần tử cần xóa.|
+
+
+### **Quy trình làm việc**
+* Tạo thư mục day13/ và file Makefile:
+    ```bash
+        mkdir day13/ && touch Makefile
+    ```
+
+* Viết nội dung Makefile và chạy file kiểm nghiệm.
+
+---
+## **Day14:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day15:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day16:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day17:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day18:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day19:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day20:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day21:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day22:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day23:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
+## **Day24:**
+### **Kiến thức đa học**
+### **Quy trình làm việc**
+---
