@@ -734,8 +734,8 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 
 ---
 
-## **Day13:**
-### **Kiến thức đa học**
+## **Day 13: C++ hiện đại**
+### **Kiến thức đã học**
 1. **Con trỏ thông minh:**
 * Đây là giải pháp của C++ hiện đại cho vấn đề rò rỉ bộ nhớ. Con trỏ thông minh là các đối tượng "gói" con trỏ thô, và chúng tự động gọi delete khi không còn được sử dụng.
 
@@ -792,7 +792,7 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 * Viết nội dung Makefile và chạy file kiểm nghiệm.
 ---
 ## **Day14: Thuật toán sắp xếp**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 1. **Các thuật toán sắp xếp:**
 * *Sắp xếp nổi bọt (Bubble Sort)*:
     * Ý tưởng: So sánh các cặp phần tử liền kề và đổi chỗ nếu chúng sai thứ tự. Lặp lại quá trình này cho đến khi không còn lần đổi chỗ nào nữa. Phần tử lớn nhất sẽ "nổi" dần lên cuối danh sách.
@@ -831,7 +831,7 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 * Viết nội dung Makefile và chạy file kiểm nghiệm.
 ---
 ## **Day15: Thuật toán tìm kiếm**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 1. **Thuật toán Tìm kiếm Tuyến tính (Linear Search):**
 
     * Logic: Duyệt qua từng phần tử một cách tuần tự.
@@ -849,41 +849,87 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
     * Ưu điểm: Tốc độ cực kỳ cao `(O(log n))` so với tìm kiếm tuyến tính `(O(n))`, đặc biệt là với các bộ dữ liệu lớn. 
 
     * Triển khai: Tự viết hàm `binarySearch()` và học cách dùng `std::binary_search` của thư viện `<algorithm>`.
+
 ### **Quy trình làm việc**
+* Tạo thư mục day14/ và copy file Makefile:
+    ```bash
+        mkdir day14/ && cp day14/Makefile day15/Makefile
+    ```
+
+* Chạy file kiểm nghiệm.
 ---
-## **Day16:**
-### **Kiến thức đa học**
+## **Day 16: Đệ Quy (Recursion)**
+### **Kiến thức đã học**
+
+* Đệ quy là một phương pháp giải quyết vấn đề bằng cách chia nhỏ một bài toán lớn thành các phiên bản nhỏ hơn của chính bài toán đó, cho đến khi gặp một phiên bản cực kỳ đơn giản có thể giải quyết ngay lập tức.
+
+* Một hàm đệ quy luôn có hai phần thiết yếu:
+
+    * Trường hợp cơ sở (Base Case): Một điều kiện dừng đơn giản. Nếu không có nó, hàm sẽ tự gọi chính nó mãi mãi và gây ra lỗi tràn bộ nhớ stack (stack overflow).
+
+    * Bước đệ quy (Recursive Step): Phần mà hàm tự gọi lại chính nó, nhưng với một đầu vào "nhỏ hơn" hoặc "đơn giản hơn" để tiến gần hơn đến trường hợp cơ sở.
+
 ### **Quy trình làm việc**
+* Tạo thư mục day14/ và copy file Makefile:
+    ```bash
+        mkdir day14/ && cp day14/Makefile day16/Makefile
+    ```
+
+* Chạy file kiểm nghiệm.
 ---
-## **Day17:**
-### **Kiến thức đa học**
+## **Day 17: Quay Lui (Backtracking)**
+### **Kiến thức đã học**
+
+* Backtracking là một kỹ thuật đệ quy dùng để giải quyết các bài toán bằng cách thử xây dựng một giải pháp từng bước một. Tại mỗi bước, nếu thấy lựa chọn hiện tại không thể dẫn đến một giải pháp hợp lệ, nó sẽ "quay lui" (backtrack), tức là hủy bỏ lựa chọn đó và thử một lựa chọn khác.
+
+* Hãy tưởng tượng bạn đang cố gắng thoát khỏi một mê cung:
+
+    * Chọn: Bạn đến một ngã ba và chọn đi về bên trái.
+
+    * Khám phá (Đệ quy): Bạn đi sâu vào con đường bên trái.
+
+    * Gặp ngõ cụt: Bạn nhận ra con đường này không dẫn đến lối ra.
+
+    * Quay lui (Backtrack): Bạn quay trở lại ngã ba vừa rồi, "hủy bỏ" lựa chọn đi bên trái.
+
+    * Thử lựa chọn khác: Bây giờ bạn thử đi về bên phải.
+
+* Quá trình này lặp đi lặp lại cho đến khi bạn tìm thấy lối ra (trường hợp cơ sở thành công) hoặc đã thử hết mọi con đường (trường hợp cơ sở thất bại). Mẫu chung của nó là "Chọn -> Khám phá -> Bỏ chọn".
+
 ### **Quy trình làm việc**
+
+* Tạo thư mục day14/ và copy file Makefile:
+    ```bash
+        mkdir day14/ && cp day14/Makefile day17/Makefile
+    ```
+
+* Chạy file kiểm nghiệm.
 ---
 ## **Day18:**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 ### **Quy trình làm việc**
 ---
 ## **Day19:**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 ### **Quy trình làm việc**
 ---
 ## **Day20:**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 ### **Quy trình làm việc**
 ---
 ## **Day21:**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 ### **Quy trình làm việc**
 ---
 ## **Day22:**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 ### **Quy trình làm việc**
 ---
 ## **Day23:**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 ### **Quy trình làm việc**
 ---
 ## **Day24:**
-### **Kiến thức đa học**
+### **Kiến thức đã học**
 ### **Quy trình làm việc**
 ---
