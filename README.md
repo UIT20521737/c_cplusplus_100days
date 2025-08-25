@@ -791,7 +791,7 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 
 * Viết nội dung Makefile và chạy file kiểm nghiệm.
 ---
-## **Day14:**
+## **Day14: Thuật toán sắp xếp**
 ### **Kiến thức đa học**
 1. **Các thuật toán sắp xếp:**
 * *Sắp xếp nổi bọt (Bubble Sort)*:
@@ -830,8 +830,25 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 
 * Viết nội dung Makefile và chạy file kiểm nghiệm.
 ---
-## **Day15:**
+## **Day15: Thuật toán tìm kiếm**
 ### **Kiến thức đa học**
+1. **Thuật toán Tìm kiếm Tuyến tính (Linear Search):**
+
+    * Logic: Duyệt qua từng phần tử một cách tuần tự.
+
+    * Ưu điểm: Đơn giản, hoạt động trên dữ liệu chưa được sắp xếp.
+
+    * Triển khai: Tự viết hàm `linear_search()` và học cách dùng `std::find` của thư viện `<algorithm>`.
+
+2. **Thuật toán Tìm kiếm Nhị phân (Binary Search):**
+
+    * Logic: "Chia để trị" - liên tục chia đôi phạm vi tìm kiếm.
+
+    * Yêu cầu: Bắt buộc dữ liệu phải được sắp xếp trước.
+
+    * Ưu điểm: Tốc độ cực kỳ cao `(O(log n))` so với tìm kiếm tuyến tính `(O(n))`, đặc biệt là với các bộ dữ liệu lớn. 
+
+    * Triển khai: Tự viết hàm `binarySearch()` và học cách dùng `std::binary_search` của thư viện `<algorithm>`.
 ### **Quy trình làm việc**
 ---
 ## **Day16:**

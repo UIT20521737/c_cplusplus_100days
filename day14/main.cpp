@@ -63,10 +63,11 @@ int main(){
     // Create the base vector with random data
     vector<int> original_vec(VECTOR_SIZE);
     generate(original_vec.begin(), original_vec.end(), [&]() { return distrib(gen); });
-    cout << "Vector size: "<< VECTOR_SIZE<<endl;
+    cout << "Vector size: "<< VECTOR_SIZE <<endl;
     for(int i = 1; i < 6; i++){
         cout<<"--------Testcase "<<i<<"--------"<<endl;
         test_sort_algorithsm(original_vec, i);
     }
+    
     return 0;
 }
