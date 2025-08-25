@@ -646,4 +646,89 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
 
         # Chạy file vừa biên dịch
         ./vector_example
+    ``` 
+---
+
+## **Day12: Debugger và Makefile**
+### Kiến thức đã học
+1. **Debugger:**
+
+* Debugger: Giống như bạn có một bản vẽ 3D của cỗ máy, có thể chạy mô phỏng từng bước, tạm dừng, và xem xét giá trị của từng con ốc tại bất kỳ thời điểm nào.
+
+* Các khái niệm có trong debugger:
+    
+    * Breakpoint (Điểm dừng): Đánh dấu một dòng code để chương trình tự động tạm dừng ngay trước khi thực thi dòng đó.
+
+    * Step Over/Into/Out (Đi từng bước): Cho phép bạn thực thi chương trình từng dòng một.
+
+    * Inspect Variables (Kiểm tra biến): Xem giá trị của tất cả các biến tại thời điểm chương trình bị tạm dừng.
+
+2. **Makefile:**
+
+* Makefile là một file kịch bản chứa các công thức để build (biên dịch và liên kết) một dự án phần mềm. Công cụ make sẽ đọc file này và thực thi các lệnh một cách thông minh, nó chỉ biên dịch lại những file đã bị thay đổi để tiết kiệm thời gian.
+
+* Một Makefile được tạo nên từ 3 thành phần chính:
+    * *Biến (Variables):*
+
+        * Mục đích: Giúp file dễ đọc và dễ thay đổi.
+
+        * Cú pháp: TEN_BIEN = giá_trị
+        
+        * Ví dụ: 
+            ```Makefile
+                # Trình biên dịch C++
+                CXX = g++
+
+                # Các cờ (flags) cho trình biên dịch
+                # -std=c++17: Dùng chuẩn C++17
+                # -Wall: Bật tất cả các cảnh báo (Warning all)
+                # -g: Thêm thông tin gỡ lỗi (debug)
+                CXXFLAGS = -std=c++17 -Wall -g
+
+                # Tên của chương trình cuối cùng
+                TARGET = my_app
+            ```
+        
+    * *Quy tắc:*
+
+        * Đây là trái tim của Makefile. Một quy tắc là một "công thức nấu ăn" chỉ cho make cách tạo ra một file từ các file khác.
+
+        * Cú pháp:
+            ```Makefile
+                target: prerequisite1 prerequisite2 ...
+                    <TAB>command
+            ```
+        * Giải thích:
+
+            * target: "Món ăn" cuối cùng chúng ta muốn tạo (ví dụ: my_app hoặc main.o).
+
+            * prerequisite: Các "nguyên liệu" cần có trước khi nấu (ví dụ: main.o, student.o hoặc main.cpp).
+
+            * command: "Hướng dẫn nấu ăn". Đây là lệnh sẽ được thực thi.
+
+            LƯU Ý CỰC KỲ QUAN TRỌNG: Dòng command bắt buộc phải được thụt vào bằng một ký tự Tab, không phải dấu cách (space).
+        
+    * *Target giả (Phony Targets):*
+        
+        * Đây là những quy tắc đặc biệt mà tên của chúng không phải là tên của một file. Chúng là tên của một hành động.
+
+        * Mục đích: Dùng để ra lệnh cho make làm một việc gì đó, như make clean (dọn dẹp) hoặc make run (chạy chương trình).
+
+        * Cú pháp: Chúng ta khai báo chúng bằng .PHONY để make không bị nhầm lẫn với các file có tên tương tự.
+
+            ```Makefile
+                .PHONY: all clean run
+            ```
+### Quy trình thực hiện
+* Tạo thư mục day12/ và file Makefile:
+    ```bash
+        mkdir day12/ && touch Makefile
     ```
+
+* Tạo file main.cpp, a.cpp, b.cpp:
+    ```bash
+        touch main.cpp a.cpp b.cpp
+    ```
+
+* Viết nội dung Makefile và chạy file kiểm nghiệm.
+
