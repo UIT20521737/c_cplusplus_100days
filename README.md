@@ -790,11 +790,45 @@ SOURCES ?= main.cpp Dog.cpp Animal.cpp
     ```
 
 * Viết nội dung Makefile và chạy file kiểm nghiệm.
-
 ---
 ## **Day14:**
 ### **Kiến thức đa học**
+1. **Các thuật toán sắp xếp:**
+* *Sắp xếp nổi bọt (Bubble Sort)*:
+    * Ý tưởng: So sánh các cặp phần tử liền kề và đổi chỗ nếu chúng sai thứ tự. Lặp lại quá trình này cho đến khi không còn lần đổi chỗ nào nữa. Phần tử lớn nhất sẽ "nổi" dần lên cuối danh sách.
+
+* *Sắp xếp chọn (Selection Sort)*:
+
+    * Ý tưởng: Tìm phần tử nhỏ nhất trong phần danh sách chưa được sắp xếp và đổi chỗ nó với phần tử ở đầu phần chưa sắp xếp đó.
+
+* *Sắp xếp chèn (Insertion Sort)*:
+
+    * Ý tưởng: Duyệt qua danh sách, và với mỗi phần tử, chèn nó vào đúng vị trí trong danh sách con đã được sắp xếp ở phía trước nó. Rất giống cách bạn sắp xếp một bộ bài trên tay.
+
+* *Sắp xếp trộn (Merge Sort):*:
+
+    * Ý tưởng: Dựa trên nguyên tắc "Chia để trị". Liên tục chia đôi danh sách cho đến khi mỗi phần chỉ còn một phần tử, sau đó trộn các phần đã sắp xếp lại với nhau một cách có thứ tự.
+
+* *Sắp xếp nhanh (Quick Sort)*:
+
+    * Ý tưởng: Cũng dựa trên "Chia để trị". Chọn một phần tử làm "chốt" (pivot), sau đó phân hoạch danh sách thành hai nửa: một nửa nhỏ hơn chốt và một nửa lớn hơn chốt. Lặp lại quá trình một cách đệ quy cho hai nửa đó.
+
+2. **Các hàm sắp xếp trong Thư viện `<algorithm>`:**
+
+    |Hàm (Function)|Chức năng|
+    |-|-|
+    |`std::sort`|Sắp xếp một dãy. Đây là hàm sắp xếp nhanh và hiệu quả nhất cho hầu hết các trường hợp.|
+    |`std::stable_sort`|Sắp xếp giống sort nhưng giữ nguyên thứ tự tương đối của các phần tử bằng nhau. Rất hữu ích khi bạn sắp xếp đối tượng theo nhiều tiêu chí.|
+    |`std::partial_sort`|Chỉ sắp xếp N phần tử đầu tiên của một dãy vào đúng vị trí. Phần còn lại của dãy không được sắp xếp. Hữu ích khi bạn chỉ cần tìm "Top N".|
+    |`std::is_sorted`|Kiểm tra xem một dãy đã được sắp xếp hay chưa. Trả về `true` hoặc `false`.|
+    |`std::nth_element`|Một dạng sắp xếp một phần rất hiệu quả. Nó không sắp xếp toàn bộ dãy, mà chỉ đặt phần tử thứ N vào đúng vị trí của nó nếu dãy được sắp xếp. Tất cả các phần tử trước nó đều nhỏ hơn hoặc bằng, và tất cả các phần tử sau nó đều lớn hơn hoặc bằng.|
 ### **Quy trình làm việc**
+* Tạo thư mục day14/ và file Makefile:
+    ```bash
+        mkdir day14/ && touch Makefile
+    ```
+
+* Viết nội dung Makefile và chạy file kiểm nghiệm.
 ---
 ## **Day15:**
 ### **Kiến thức đa học**
