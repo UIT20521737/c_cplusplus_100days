@@ -1,4 +1,12 @@
 #include "StudentManager.h"
+Student* StudentManager::find_student_by_id(const string& id){
+    for (auto& student : students) {
+        if (student.getId() == id) {
+            return &student; // Return a pointer to the found student
+        }
+    }
+    return nullptr;
+}
 
 void StudentManager::add_student(){
     string id, name;
@@ -15,7 +23,7 @@ void StudentManager::add_student(){
     getline(cin, name); // Use getline to read names with spaces
 
     cout << "Enter GPA: ";
-    cin >> gpa;
+    gpa = get_valid_double_input();
 
     // Create a new Student object and add it to the vector
     students.push_back(Student(id, name, gpa));
@@ -186,9 +194,10 @@ void StudentManager::sort_students(){
     }
     display_all_student(); // Hiển thị danh sách đã sắp xếp
 }
+
 void StudentManager::edit_student(){
     if (students.empty()) {
-        cout << "The list is empty, nothing to sort." << endl;
+        cout << "The list is empty!" << endl;
         return;
     } 
 
@@ -196,50 +205,47 @@ void StudentManager::edit_student(){
     cout << "\nEnter ID of student to edit: ";
     cin >> id_to_edit;
 
-    bool found = false;
     // Dùng tham chiếu (&) để có thể sửa đổi trực tiếp đối tượng sinh viên
-    for (auto& student : students) {
-        if (student.getId() == id_to_edit) {
-            cout << "--- Student Found. Current info: ---" << endl;
-            student.display();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Xóa bộ đệm
+    Student* student_to_edit = find_student_by_id(id_to_edit);
+    if (student_to_edit != nullptr) {
+        cout << "--- Student Found. Current info: ---" << endl;
+        student_to_edit->display();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Xóa bộ đệm
 
-            string new_name;
-            string new_id;
-            double new_gpa;
+        string new_name;
+        string new_id;
+        double new_gpa;
 
-            cout << "Enter new ID (or press Enter to keep old ID): ";
-            getline(cin, new_id);
-            if (!new_id.empty()) {
-                student.setId(new_id);
-            }
-
-            cout << "Enter new name (or press Enter to keep old name): ";
-            getline(cin, new_name);
-            if (!new_name.empty()) {
-                student.setName(new_name);
-            }
-
-            char c;
-            do {
-                cout << "Do you want to edit the student's GPA? (y/n): ";
-                cin >> c;
-            } while (tolower(c) != 'y' && tolower(c) != 'n');
-
-            if(tolower(c) == 'y'){
-                cout << "Enter new GPA: ";
-                new_gpa = get_valid_double_input();
-                student.setGPA(new_gpa);
-            }
-           
-            
-            cout << "Student information updated successfully." << endl;
-            found = true;
-            break;
+        cout << "Enter new ID (or press Enter to keep old ID): ";
+        getline(cin, new_id);
+        if (!new_id.empty()) {
+            student_to_edit->setId(new_id);
         }
-    }
 
-    if (!found) {
+        cout << "Enter new name (or press Enter to keep old name): ";
+        getline(cin, new_name);
+        if (!new_name.empty()) {
+            student_to_edit->setName(new_name);
+        }
+
+        char c;
+        do {
+            cout << "Do you want to edit the student's GPA? (y/n): ";
+            cin >> c;
+        } while (tolower(c) != 'y' && tolower(c) != 'n');
+
+        if(tolower(c) == 'y'){
+            cout << "Enter new GPA: ";
+            new_gpa = get_valid_double_input();
+            student_to_edit->setGPA(new_gpa);
+        }
+        
+        
+        cout << "Student information updated successfully." << endl;
+        
+         
+    }
+    else {
         cout << "Student with ID '" << id_to_edit << "' not found." << endl;
     }
 }

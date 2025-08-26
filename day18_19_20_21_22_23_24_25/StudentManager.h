@@ -12,6 +12,7 @@ double get_valid_double_input();
 class StudentManager{
     private:
         vector <Student> students;
+        Student* find_student_by_id(const string& id);
     public:
         void add_student();
         void delete_all_students();
