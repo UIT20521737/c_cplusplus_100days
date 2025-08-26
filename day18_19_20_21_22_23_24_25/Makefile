@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -g -Wall -std=c++17
-SOURCES ?= main.cpp Student.cpp StudentManager.cpp
+SOURCES ?= main.cpp Student.cpp StudentManager.cpp uitils.cpp
 OBJECTS =  $(SOURCES:.cpp=.o)
 TARGET = my_program
 all: $(TARGET)

@@ -1,4 +1,14 @@
 #include "StudentManager.h"
+
+const Student* StudentManager::find_student_by_id(const string& id) const{
+    for (auto& student : students) {
+        if (student.getId() == id) {
+            return &student; // Return a pointer to the found student
+        }
+    }
+    return nullptr;
+}
+
 Student* StudentManager::find_student_by_id(const string& id){
     for (auto& student : students) {
         if (student.getId() == id) {
@@ -133,25 +143,19 @@ void StudentManager::find_student() const{
         cout << "The list is empty!" << endl;
         return;
     }
-    else{
-        string id_to_find;
-        cout << "\nEnter ID of student to find: ";
-        cin >> id_to_find;
-        id_to_find = trim(id_to_find);
-        bool found = false;
-        for (const auto& student: students){
-            if(student.getId() == id_to_find){
-                cout << "--- Student Found ---" << endl;
-                student.display();
-                found = true;
-                break; 
-            }
-        }
-        if (!found) {
-            cout << "Student with ID '" << id_to_find << "' not found." << endl;
-        }
-    }
     
+    string id_to_find;
+    cout << "\nEnter ID of student to find: ";
+    cin >> id_to_find;
+    id_to_find = trim(id_to_find);
+    const Student* student_to_find = find_student_by_id(id_to_find);
+    if(student_to_find->getId() == id_to_find){
+        cout << "--- Student Found ---" << endl;
+        student_to_find->display();
+    }
+    else {
+        cout << "Student with ID '" << id_to_find << "' not found." << endl;
+    }    
 }
 
 void StudentManager::sort_students(){
@@ -251,19 +255,3 @@ void StudentManager::edit_student(){
 }
 
     
-string trim(const std::string& str) {
-    size_t first = str.find_first_not_of(" \t\n\r");
-    size_t last = str.find_last_not_of(" \t\n\r");
-    if (first == std::string::npos) return "";
-    return str.substr(first, last - first + 1);
-}
-
-double get_valid_double_input() {
-    double value;
-    while (!(cin >> value)) {
-        cout << "Invalid input. Please enter a number: ";
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
-    return value;
-}

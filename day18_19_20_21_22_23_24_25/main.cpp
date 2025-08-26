@@ -1,5 +1,6 @@
 #include <iostream>
 #include "StudentManager.h"
+#include "utils.h"
 using namespace std;
 void menu();
 void clear_screen();
@@ -27,7 +28,7 @@ void menu(){
         cout << "9. Sort students" << endl;
         cout << "Press any other key to exit!" << endl;
         cout << "Enter your choice: "; 
-        cin >> choice;
+        choice = get_valid_int_input();
         switch(choice){
             case 1: 
                 sm.add_student();
