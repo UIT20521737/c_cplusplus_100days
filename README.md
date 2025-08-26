@@ -928,8 +928,37 @@ Chương trình phải cung cấp các chức năng sau thông qua một menu l�
 Chương trình phải tự động tải danh sách sinh viên từ một file (ví dụ: students.csv) khi khởi động.
 
 Khi người dùng chọn thoát, chương trình phải tự động lưu danh sách hiện tại vào file đó, ghi đè nội dung cũ.
+### **Các tính năng**
 
+* Thêm sinh viên mới (ID, Tên, GPA).
+* Hiển thị toàn bộ danh sách sinh viên.
+* Xoá toàn bộ danh sách sinh viên.
+* Lưu danh sách ra file định dạng `.csv`.
+* Tự động tải danh sách từ file khi khởi động.
+* Tìm kiếm sinh viên theo ID.
+* Xóa sinh viên theo ID.
+* Sửa thông tin sinh viên.
+* Sắp xếp danh sách sinh viên theo nhiều tiêu chí (ID, Tên, GPA).
+* Xử lý lỗi nhập liệu không hợp lệ.
+
+### **Công nghệ sử dụng**
+
+* **Ngôn ngữ**: C++17
+* **Thư viện**: STL (`vector`, `string`, `fstream`)
+* **Nguyên tắc OOP**: Đóng gói, Tách file `.h`/`.cpp`
+* **Hệ thống Build**: Makefile
 
 ### **Quy trình làm việc**
+1.  Di chuyển vào thư mục dự án.
+2.  Chạy `make` để biên dịch.
+
+    ```bash
+        make
+    ```
+3.  Chạy chương trình.
+
+    ```bash
+         make run
+    ```
 ---
 
