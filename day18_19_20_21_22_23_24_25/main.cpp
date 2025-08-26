@@ -51,14 +51,18 @@ void menu(){
                 sm.save_file(filename);
                 break;
             }
-            case 6: {
+            case 6: 
                 sm.find_student();
                 break;
-            }
-            case 7:{
+            case 7:
                 sm.delete_a_student();
                 break;
-            }
+            case 8: 
+                sm.edit_student();
+                break;
+            case 9: 
+                sm.sort_students();
+                break;
             default:
                 is_true = false;
         }

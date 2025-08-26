@@ -146,7 +146,105 @@ void StudentManager::find_student() const{
     
 }
 
+void StudentManager::sort_students(){
+    if (students.empty()) {
+        cout << "The list is empty, nothing to sort." << endl;
+        return;
+    }
 
+    char choice;
+    cout << "\n--- Sort Students By ---" << endl;
+    cout << "1. ID (Ascending)" << endl;
+    cout << "2. Name (Ascending)" << endl;
+    cout << "3. GPA (Descending)" << endl;
+    cout << "Any other key to cancel." << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+        case '1':
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.getId() < b.getId();
+            });
+            cout << "Students sorted by ID." << endl;
+            break;
+        case '2':
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.getName() < b.getName();
+            });
+            cout << "Students sorted by Name." << endl;
+            break;
+        case '3':
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.getGPA() > b.getGPA();
+            });
+            cout << "Students sorted by GPA." << endl;
+            break;
+        default:
+            cout << "Sort operation cancelled." << endl;
+            return; // Return without displaying
+    }
+    display_all_student(); // Hiển thị danh sách đã sắp xếp
+}
+void StudentManager::edit_student(){
+    if (students.empty()) {
+        cout << "The list is empty, nothing to sort." << endl;
+        return;
+    } 
+
+    string id_to_edit;
+    cout << "\nEnter ID of student to edit: ";
+    cin >> id_to_edit;
+
+    bool found = false;
+    // Dùng tham chiếu (&) để có thể sửa đổi trực tiếp đối tượng sinh viên
+    for (auto& student : students) {
+        if (student.getId() == id_to_edit) {
+            cout << "--- Student Found. Current info: ---" << endl;
+            student.display();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Xóa bộ đệm
+
+            string new_name;
+            string new_id;
+            double new_gpa;
+
+            cout << "Enter new ID (or press Enter to keep old ID): ";
+            getline(cin, new_id);
+            if (!new_id.empty()) {
+                student.setId(new_id);
+            }
+
+            cout << "Enter new name (or press Enter to keep old name): ";
+            getline(cin, new_name);
+            if (!new_name.empty()) {
+                student.setName(new_name);
+            }
+
+            char c;
+            do {
+                cout << "Do you want to edit the student's GPA? (y/n): ";
+                cin >> c;
+            } while (tolower(c) != 'y' && tolower(c) != 'n');
+
+            if(tolower(c) == 'y'){
+                cout << "Enter new GPA: ";
+                new_gpa = get_valid_double_input();
+                student.setGPA(new_gpa);
+            }
+           
+            
+            cout << "Student information updated successfully." << endl;
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Student with ID '" << id_to_edit << "' not found." << endl;
+    }
+}
+
+    
 string trim(const std::string& str) {
     size_t first = str.find_first_not_of(" \t\n\r");
     size_t last = str.find_last_not_of(" \t\n\r");
@@ -154,3 +252,12 @@ string trim(const std::string& str) {
     return str.substr(first, last - first + 1);
 }
 
+double get_valid_double_input() {
+    double value;
+    while (!(cin >> value)) {
+        cout << "Invalid input. Please enter a number: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return value;
+}

@@ -8,6 +8,7 @@
 #include "Student.h"
 using namespace std;
 string trim(const std::string& str);
+double get_valid_double_input();
 class StudentManager{
     private:
         vector <Student> students;
