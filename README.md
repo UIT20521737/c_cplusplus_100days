@@ -962,3 +962,112 @@ Khi người dùng chọn thoát, chương trình phải tự động lưu danh 
     ```
 ---
 
+## **Day 26: Hello, OpenCV - Thao tác ảnh và video**
+### **Kiến thức đã học**
+1. **Cài đặt OpenCV:**
+
+* Trên macOS:
+    * Cài đặt Homebrew (Nếu chưa có):
+        
+        ```bash
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        ```
+
+    * Cài đặt OpenCV:
+        
+        ```bash
+            brew install opencv
+        ```
+
+    * Kiểm tra `pkg-config`:
+
+        ```bash
+            pkg-config --modversion opencv4
+        ```
+* Trên Linux (Ubuntu/Debian)
+
+    * Cập nhật danh sách gói:
+
+        ```Bash
+            sudo apt update
+        ```
+
+    * Cài đặt các gói cần thiết:
+    
+        Lệnh này sẽ cài đặt thư viện OpenCV, các file header, và các công cụ build cần thiết.
+
+        ```Bash
+            sudo apt install build-essential cmake git pkg-config libopencv-dev
+        ```
+    * Kiểm tra pkg-config:
+
+        ```Bash
+            pkg-config --modversion opencv4
+        ```
+* Trên Windows
+    * Bước 1: Cài đặt OpenCV qua MSYS2
+        * Mở terminal MSYS2 UCRT64 (tìm trong Start Menu). Đây là terminal có nền đen.
+
+        * Dán lệnh sau vào để tìm và cài đặt gói OpenCV cho môi trường MinGW-w64 của bạn:
+
+        ```Bash
+            pacman -S mingw-w64-ucrt-x86_64-opencv
+        ```
+        
+        * Nhấn Enter để đồng ý cài đặt. pacman sẽ tự động tải và cài đặt OpenCV cùng các thư viện phụ thuộc.
+
+    * Bước 2: Thêm OpenCV vào PATH (Nếu cần)
+    Thông thường, pkg-config trong MSYS2 sẽ tự tìm thấy OpenCV. Nhưng để chắc chắn, bạn có thể thêm đường dẫn của OpenCV vào PATH của Windows.
+
+        * Đường dẫn cần thêm thường là: `C:\msys64\ucrt64\bin`
+
+        * Nếu đường dẫn này chưa có trong biến môi trường Path của bạn, hãy thêm nó vào theo cách bạn đã làm khi cài MinGW.
+
+    * Bước 3: Kiểm tra pkg-config
+        Đây là bước quan trọng để xác nhận Makefile có thể tự động tìm thấy OpenCV.
+
+        * Mở một terminal mới trong VS Code.
+
+        * Gõ lệnh sau:
+
+        ```Bash
+            pkg-config --cflags --libs opencv4
+        ```
+        
+        * Nếu nó in ra một loạt các cờ biên dịch và thư viện (ví dụ: `-IC:/msys64/ucrt64/include/opencv4 -LC:/msys64/ucrt64/lib ...`), có nghĩa là mọi thứ đã sẵn sàng.
+
+2. **Thao tác đơn giản với OpenCV:**
+* Để sử dụng `OpenCV` cần include header chính :
+    ```c++ 
+        #include <opencv2/opencv.hpp> 
+    ```
+
+* Các hàm cơ bản:
+
+    |**Hàm (Function)**|**Chức năng**|
+    |-|-|
+    |`cv::imread()`|Đọc một file ảnh từ đĩa và tải nó vào một đối tượng `cv::Mat`.|
+    |`cv::imshow()`|Hiển thị một đối tượng cv::Mat trong một cửa sổ trên màn hình.|
+    |`cv::waitKey()`|Đợi người dùng nhấn một phím bất kỳ. Rất quan trọng, nếu không có nó, cửa sổ imshow sẽ xuất hiện và biến mất ngay lập tức.|
+    |`cv::imwrite()`|Ghi (lưu) một đối tượng cv::Mat thành một file ảnh mới.|
+
+3. **Thao tác với Video:**
+
+| Tên | Chức năng |
+| :--- | :--- |
+| cv::VideoCapture| Lớp chính để làm việc với video. Dùng VideoCapture cap(0) để mở webcam hoặc VideoCapture cap("video.mp4") để mở file video. |
+| cap.isOpened() | Kiểm tra xem camera hoặc file video có được mở thành công không. |
+| cap.read(frame) <br> hoặc cap >> frame| Đọc một khung hình (frame) từ video và lưu nó vào một đối tượng cv::Mat. |
+| cv::waitKey(delay)| Đợi trong delay mili-giây. Trong vòng lặp video, lệnh này (ví dụ waitKey(1)) cực kỳ quan trọng để cửa sổ có thể cập nhật và hiển thị frame mới, đồng thời bắt sự kiện nhấn phím để thoát. |
+
+### **Quy trình thực hiện**
+
+* Tạo thư mục day26 chứa các file CMakeLists.txt, file mã nguồn (.cpp), và file ảnh/video.
+
+* Tạo một thư mục con build để chứa các file biên dịch.
+
+* Sử dụng quy trình cmake .. và make để build chương trình.
+
+* Chạy file thực thi từ thư mục build (ví dụ: ./video) hoặc từ thư mục gốc (ví dụ: ./build/video).
+
+---
