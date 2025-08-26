@@ -6,6 +6,7 @@
 !/day*/*.c
 !/day*/Makefile
 !/day*/makefile
+!/day*/CMakeLists.txt
 
 /projects_and_execises
 .vscode/
