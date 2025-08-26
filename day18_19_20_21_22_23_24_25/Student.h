@@ -11,12 +11,12 @@ class Student {
         double gpa;
     public:
         Student(string id="", string name="", double gpa=0.0);
-        void setId(string id);
-        void setName(string name);
+        void setId(const string& id);
+        void setName(const string& name);
         void setGPA(double gpa);
         void display() const;
-        string getId();
-        string getName();
-        double getGPA();
+        string getId() const;
+        string getName() const;
+        double getGPA() const;
 };
 #endif
