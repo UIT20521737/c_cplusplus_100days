@@ -1071,3 +1071,44 @@ Khi người dùng chọn thoát, chương trình phải tự động lưu danh 
 * Chạy file thực thi từ thư mục build (ví dụ: ./video) hoặc từ thư mục gốc (ví dụ: ./build/video).
 
 ---
+
+## **Day 27: Các Phép Biến Đổi Hình Ảnh Cơ Bản**
+### **Kiến thức đã học**
+1. **Lấy kích thước ảnh:**
+* Đối tượng `cv::Mat` cung cấp các thuộc tính đơn giản để truy cập chiều cao, chiều rộng và số kênh màu của ảnh.
+
+    * `image.rows`: Trả về chiều cao (height) của ảnh (số hàng pixel).
+
+    * `image.cols`: Trả về chiều rộng (width) của ảnh (số cột pixel).
+
+    * `image.channels()`: Trả về số kênh màu (ví dụ: 3 cho ảnh màu BGR, 1 cho ảnh xám).
+    
+2. **Thay đổi Kích thước ảnh (Resizing):**
+
+* Khái niệm: Phóng to hoặc thu nhỏ một hình ảnh. Đây là một thao tác rất phổ biến để chuẩn hóa kích thước ảnh trước khi đưa vào các thuật toán xử lý.
+
+* Hàm chính: `cv::resize()`
+
+3. **Cắt ảnh (Cropping):**
+
+* Khái niệm: Trích xuất một vùng hình chữ nhật (Region of Interest - ROI) từ một bức ảnh lớn. Trong OpenCV, việc này cực kỳ đơn giản vì `cv::Mat` hoạt động rất thông minh.
+
+* Kỹ thuật: Bạn chỉ cần tạo một đối tượng `cv::Rect` (hình chữ nhật) và dùng nó để "cắt" một Mat mới từ Mat gốc.
+
+4. Chuyển đổi Không gian màu (Color Space Conversion)
+
+* Khái niệm: Ảnh màu thông thường được lưu ở định dạng BGR (Blue-Green-Red). Tuy nhiên, nhiều thuật toán xử lý ảnh lại hoạt động hiệu quả hơn trên ảnh xám (grayscale) hoặc các không gian màu khác như HSV (Hue, Saturation, Value).
+
+Hàm chính: `cv::cvtColor()`
+### **Quy trình thực hiện**
+* Tạo thư mục day27.
+
+* Tạo file CMakeLists.txt và main.cpp với nội dung trên.
+
+* Copy một file ảnh (ví dụ images.jpeg) trong thư mục day26 vào thư mục day27.
+
+* Sử dụng quy trình mkdir build && cd build && cmake .. && make để biên dịch.
+
+* Chạy ./my_app từ bên trong thư mục build. Bạn sẽ thấy 4 cửa sổ hiện ra, mỗi cửa sổ là một kết quả của các phép biến đổi.
+
+---
